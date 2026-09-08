@@ -36,9 +36,27 @@ const projects = [
     link: 'https://campus-lost-found-frontend-latest.onrender.com/',
   },
   {
+    title: 'PesaFlow',
+    category: 'Fintech',
+    number: '05',
+    description: 'A wallet and money-transfer product with user and admin workspaces, beneficiaries, analytics, and transfer flows.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85',
+    link: 'https://pesaflow-frontend-2.vercel.app/',
+    repo: 'https://github.com/munroemil6-bot/pesaflow-frontend',
+  },
+  {
+    title: 'BookBarn Library System',
+    category: 'Product',
+    number: '06',
+    description: 'A responsive library platform for authentication, catalog search, borrowing workflows, and administration, backed by a Flask API.',
+    image: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1000&q=85',
+    link: 'https://library-management-system-frontend-jade.vercel.app/login',
+    repo: 'https://github.com/munroemil6-bot/library-management-system-frontend',
+  },
+  {
     title: 'Royal Events Catering',
     category: 'Hospitality',
-    number: '05',
+    number: '07',
     description: 'An elegant hospitality experience for premium catering and events.',
     image: 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1000&q=85',
     link: 'https://munroemil6-bot.github.io/Royal-Events-Catering/',
@@ -50,7 +68,11 @@ const skills = [
   ['CSS', '70%'],
   ['JavaScript', '70%'],
   ['React', '73%'],
-  ['Python', '72%'],
+  ['Python', '82%'],
+  ['Django', '72%'],
+  ['Flask', '78%'],
+  ['SQL & Databases', '76%'],
+  ['Docker', '68%'],
 ]
 
 function App() {
@@ -83,7 +105,7 @@ function App() {
           {menuOpen ? 'CLOSE' : 'MENU'}
         </button>
         <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Main navigation">
-          {['Home', 'Work', 'About', 'Contact'].map((item) => (
+          {['Home', 'Work', 'About', 'Skills', 'Contact'].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>{item}</a>
           ))}
         </nav>
@@ -93,9 +115,9 @@ function App() {
       <main>
         <section className="hero" id="home">
           <div className="hero-copy">
-            <p className="eyebrow">Frontend developer / Nairobi, KE</p>
+            <p className="eyebrow">Full-stack web developer / Nairobi, KE</p>
             <h1>I build digital<br /><em>things that matter.</em></h1>
-            <p className="hero-intro">I'm Myles Munroe, a frontend developer turning ideas into clear, responsive and memorable web experiences.</p>
+            <p className="hero-intro">I'm Myles Munroe, a full-stack web developer building clear, responsive products from frontend interfaces to Python-powered backends.</p>
             <div className="hero-actions">
               <a className="button button-dark" href="#work">See my work <span>{'->'}</span></a>
               <a className="text-link" href="https://github.com/munroemil6-bot" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
@@ -106,14 +128,14 @@ function App() {
             <span className="portrait-note">Curious by default<br />Useful on purpose.</span>
             <span className="hero-stamp">M / 2026</span>
           </div>
-          <div className="hero-bottomline"><span>Scroll to explore</span><span className="line"></span><span>01 / 04</span></div>
+          <div className="hero-bottomline"><span>Scroll to explore</span><span className="line"></span><span>01 / 05</span></div>
         </section>
 
         <section className="statement-section" id="about">
           <p className="section-kicker">A little about me</p>
           <div className="statement-grid">
             <h2>Good design should feel <span>obvious</span> after you see it.</h2>
-            <div><p>I care about the details people don't have to think about: a confident first impression, a layout that breathes, and interactions that make sense.</p><p>My toolkit is growing from frontend craft into Python-powered backend work. Every project is a chance to make the web a little more human.</p><a className="text-link" href="#contact">More about my approach <span>{'->'}</span></a></div>
+            <div><p>I care about the details people don't have to think about: a confident first impression, a layout that breathes, and interactions that make sense.</p><p>From React interfaces to Django and Flask APIs, I build the full product surface. I use Docker, SQL, and relational databases to make those products dependable beyond the browser.</p><a className="text-link" href="#contact">Let's build something useful <span>{'->'}</span></a></div>
           </div>
         </section>
 
@@ -123,12 +145,12 @@ function App() {
             {categories.map((category) => <button key={category} className={activeFilter === category ? 'filter active' : 'filter'} type="button" onClick={() => setActiveFilter(category)}>{category}</button>)}
           </div>
           <div className="projects-grid">
-            {visibleProjects.map((project) => <article className="project-card" key={project.title}><a href={project.link} target="_blank" rel="noreferrer"><div className="project-image"><img src={project.image} alt="" /><span className="project-arrow">↗</span></div><div className="project-meta"><span>{project.number} / {project.category}</span><h3>{project.title}</h3><p>{project.description}</p></div></a></article>)}
+            {visibleProjects.map((project) => <article className="project-card" key={project.title}><a className="project-live" href={project.link} target="_blank" rel="noreferrer"><div className="project-image"><img src={project.image} alt="" /><span className="project-arrow">↗</span></div><div className="project-meta"><span>{project.number} / {project.category}</span><h3>{project.title}</h3><p>{project.description}</p></div></a>{project.repo && <a className="project-repo" href={project.repo} target="_blank" rel="noreferrer">View source <span>↗</span></a>}</article>)}
           </div>
         </section>
 
         <section className="skills-section" id="skills">
-          <div><p className="section-kicker">Tools I use</p><h2>A growing<br /><em>toolbox.</em></h2></div>
+          <div><p className="section-kicker">Full-stack toolkit</p><h2>From interface<br /><em>to infrastructure.</em></h2></div>
           <div className="skills-list">{skills.map(([skill, level]) => <div className="skill-row" key={skill}><span>{skill}</span><div className="skill-track"><span style={{ width: level }}></span></div><small>{level}</small></div>)}</div>
         </section>
 
