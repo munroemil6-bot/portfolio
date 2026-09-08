@@ -78,7 +78,6 @@ const skills = [
 function App() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [menuOpen, setMenuOpen] = useState(false)
-  const [formSent, setFormSent] = useState(false)
 
   const categories = ['All', ...new Set(projects.map((project) => project.category))]
   const visibleProjects = activeFilter === 'All'
@@ -86,16 +85,6 @@ function App() {
     : projects.filter((project) => project.category === activeFilter)
 
   const closeMenu = () => setMenuOpen(false)
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const form = new FormData(event.currentTarget)
-    const subject = encodeURIComponent(`Portfolio enquiry from ${form.get('name')}`)
-    const body = encodeURIComponent(`Email: ${form.get('email')}\n\n${form.get('message')}`)
-    window.location.href = `mailto:munroemil6@gmail.com?subject=${subject}&body=${body}`
-    setFormSent(true)
-    event.currentTarget.reset()
-  }
 
   return (
     <div className="site-shell">
@@ -155,12 +144,12 @@ function App() {
         </section>
 
         <section className="contact-section" id="contact">
-          <div className="contact-intro"><p className="section-kicker">Have a good idea?</p><h2>Let's make<br /><em>it real.</em></h2><p>Tell me what you're building, what is getting in the way, or just say hello.</p><a className="contact-email" href="mailto:munroemil6@gmail.com">munroemil6@gmail.com <span>↗</span></a></div>
-          <form className="contact-form" onSubmit={handleSubmit}><label>Name<input name="name" type="text" placeholder="Your name" required /></label><label>Email<input name="email" type="email" placeholder="you@example.com" required /></label><label>Message<textarea name="message" rows="4" placeholder="Tell me a little about your project..." required></textarea></label><button className="button button-dark" type="submit">Send enquiry <span>{'->'}</span></button>{formSent && <p className="form-note">Your mail client is opening now. Thanks!</p>}</form>
+          <div className="contact-intro"><p className="section-kicker">Have a good idea?</p><h2>Let's make<br /><em>it real.</em></h2><p>Tell me what you're building, what is getting in the way, or just say hello.</p></div>
+          <div className="contact-links"><a className="contact-link" href="https://wa.me/?text=Hi%20Myles%2C%20I%20found%20your%20portfolio." target="_blank" rel="noreferrer"><span>WhatsApp</span><span>↗</span></a><a className="contact-link" href="mailto:munroemil6@gmail.com"><span>Email</span><span>↗</span></a><a className="contact-link" href="https://github.com/munroemil6-bot" target="_blank" rel="noreferrer"><span>GitHub</span><span>↗</span></a><a className="contact-link" href="https://www.linkedin.com/in/myles-laisa-a65607417" target="_blank" rel="noreferrer"><span>LinkedIn</span><span>↗</span></a></div>
         </section>
       </main>
 
-      <footer className="site-footer"><span>© {new Date().getFullYear()} Myles Munroe</span><span>Made with React + curiosity</span><div><a href="https://github.com/munroemil6-bot" target="_blank" rel="noreferrer">GitHub</a><a href="mailto:munroemil6@gmail.com">Email</a></div></footer>
+      <footer className="site-footer"><span>© {new Date().getFullYear()} Myles Munroe</span><span>Made with React + curiosity</span><div><a href="https://wa.me/?text=Hi%20Myles%2C%20I%20found%20your%20portfolio." target="_blank" rel="noreferrer">WhatsApp</a><a href="mailto:munroemil6@gmail.com">Email</a><a href="https://github.com/munroemil6-bot" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/myles-laisa-a65607417" target="_blank" rel="noreferrer">LinkedIn</a></div></footer>
     </div>
   )
 }
